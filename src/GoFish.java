@@ -9,6 +9,7 @@ private GoFish() {
 	
 	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	setTitle("Go Fish");
+	setLocationRelativeTo(null);
 }
 
 public static void main(String[] args) {
