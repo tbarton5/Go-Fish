@@ -5,6 +5,8 @@ public class GoFish extends javax.swing.JFrame {
 	
 private GoFish() {
 	getContentPane().setPreferredSize(new Dimension(960,600));
+	getContentPane().setBackground(new Color(0,128,0));
+	
 	pack();
 	
 	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
