@@ -16,6 +16,8 @@ private GoFish() {
 }
 
 public static void main(String[] args) {
+	Hand player = new Hand(7);
+	Hand computer = new Hand(7);
 	java.awt.EventQueue.invokeLater(new Runnable() {
 		public void run() {
 			new GoFish().setVisible(true);
@@ -33,6 +35,15 @@ public static void main(String[] args) {
 	
 	for(int i = 0; i < 52; i++)
 		System.out.println("Now, card " + (i + 1) + " is the " + deck[i].getRank() + " of " + deck[i].getSuit());
+	
+	System.out.println("Human player cards:");
+	for (int i = 0; i < 7; i++) {
+		System.out.println(player.card[i].getRank() + " " + player.card[i].getSuit());
+	}
+	System.out.println("Computer player cards:");
+	for (int i = 0; i < 7; i++) {
+		System.out.println(computer.card[i].getRank() + " " + computer.card[i].getSuit());
+	}
 }
 
 }
