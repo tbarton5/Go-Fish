@@ -1,5 +1,6 @@
 import java.util.*;
 import java.awt.*;
+
 import javax.swing.*;
 public class GoFish extends javax.swing.JFrame {
 	
@@ -20,6 +21,18 @@ public static void main(String[] args) {
 			new GoFish().setVisible(true);
 		}
 	});
+	Card[] deck = new Card[52];
+
+	Deck.makeDeck(deck);
+	
+	for(int i = 0; i < 52; i++)
+		System.out.println("Card " + (i + 1) + " is the " + deck[i].getRank() + " of " + deck[i].getSuit());
+		
+	
+	Card.shuffleDeck(deck);
+	
+	for(int i = 0; i < 52; i++)
+		System.out.println("Now, card " + (i + 1) + " is the " + deck[i].getRank() + " of " + deck[i].getSuit());
 }
 
 }
