@@ -1,38 +1,38 @@
 import java.util.Scanner;
 public class Card {
 
-	public String suit1;
-	public String rank1;
+	public String suit;
+	public String rank;
 	
-	public String[] suit = {"Spades", "Clubs", "Hearts", "Diamonds"};
-	public String[] rank = {"Ace", "2", "3", "4", "5", "6", "7", 
+	public static final String[] SUIT = {"Spades", "Clubs", "Hearts", "Diamonds"};
+	public static final String[] RANK = {"Ace", "2", "3", "4", "5", "6", "7", 
 			"8", "9", "10", "Jack", "Queen", "King"};
 
 	
 	public Card(int num){
 		if (num == -1) {
-			suit1 = suit[(int)(Math.random() * 4)];
-			rank1 = rank[(int)(Math.random() * 13)];
+			suit = SUIT[(int)(Math.random() * 4)];
+			rank = RANK[(int)(Math.random() * 13)];
 		}
 		else {
-			suit1 = suit[num / 13];
-			rank1 = rank[num % 13];
+			suit = SUIT[num / 13];
+			rank = RANK[num % 13];
 		}
 	}
 	
 	public void setSuit(int x){
-		suit1 = suit[x];
+		suit = SUIT[x];
 	}
 	
 	public void setRank(int x){
-		rank1 = rank[x];
+		rank = RANK[x];
 	}
 	public String getRank(){
-		return rank1;
+		return rank;
 	}
 	
 	public String getSuit(){
-		return suit1;
+		return suit;
 	}
 	
 	public static void shuffleDeck(Card[] deck){
