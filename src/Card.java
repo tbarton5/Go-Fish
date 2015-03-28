@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class Card {
 
+	public int num;
 	public String suit;
 	public String rank;
 	
@@ -10,14 +11,12 @@ public class Card {
 
 	
 	public Card(int num){
-		if (num == -1) {
-			suit = SUIT[(int)(Math.random() * 4)];
-			rank = RANK[(int)(Math.random() * 13)];
-		}
-		else {
-			suit = SUIT[num / 13];
-			rank = RANK[num % 13];
-		}
+		if (num == -1)
+			num = (int) (Math.random() * 52);
+		
+		suit = SUIT[num / 13];
+		rank = RANK[num % 13];
+		this.num = num;
 	}
 	
 	public void setSuit(int x){
