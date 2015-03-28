@@ -23,18 +23,20 @@ public static void main(String[] args) {
 			new GoFish().setVisible(true);
 		}
 	});
-	Card[] deck = new Card[52];
+	/*Card[] deck = new Card[52];
 
-	Deck.makeDeck(deck);
+	Deck.makeDeck(deck);*/
+	Deck deck = new Deck(52);
 	
 	for(int i = 0; i < 52; i++)
-		System.out.println("Card " + (i + 1) + " is the " + deck[i].getRank() + " of " + deck[i].getSuit());
+		System.out.println("Card " + (i + 1) + " is the " + deck.card[i].getRank() + " of " + deck.card[i].getSuit());
 		
 	
-	Card.shuffleDeck(deck);
+	//Card.shuffleDeck(deck);
+	deck.shuffle();
 	
 	for(int i = 0; i < 52; i++)
-		System.out.println("Now, card " + (i + 1) + " is the " + deck[i].getRank() + " of " + deck[i].getSuit());
+		System.out.println("Now, card " + (i + 1) + " is the " + deck.card[i].getRank() + " of " + deck.card[i].getSuit());
 	
 	System.out.println("Human player cards:");
 	for (int i = 0; i < 7; i++) {

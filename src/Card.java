@@ -9,9 +9,15 @@ public class Card {
 			"8", "9", "10", "Jack", "Queen", "King"};
 
 	
-	public Card(){
-		suit1 = suit[(int)(Math.random() * 4)];
-		rank1 = rank[(int)(Math.random() * 13)];
+	public Card(int num){
+		if (num == -1) {
+			suit1 = suit[(int)(Math.random() * 4)];
+			rank1 = rank[(int)(Math.random() * 13)];
+		}
+		else {
+			suit1 = suit[num / 13];
+			rank1 = rank[num % 13];
+		}
 	}
 	
 	public void setSuit(int x){
@@ -33,7 +39,7 @@ public class Card {
 		int index;
 		Card temp;
 		
-		temp = new Card();
+		temp = new Card(-1);
 		index = 0;
 		
 		for(int i = 0; i < deck.length; i++){
