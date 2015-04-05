@@ -10,6 +10,7 @@ public class Deck {
 		this.card = new Card[numCards];
 		for (int i = 0; i < numCards; i++) {
 			this.card[i] = new Card(i);
+			System.out.println("Card " + (i + 1) + " is the " + this.card[i].getRank() + " of " + this.card[i].getSuit());
 		}
 	}
 	
@@ -30,7 +31,6 @@ public class Deck {
 		Card temp;
 		
 		temp = new Card(-1);
-		index = 0;
 		
 		for(int i = 0; i < this.card.length; i++){
 			index = (int)(Math.random() * this.card.length);
@@ -38,6 +38,10 @@ public class Deck {
 			temp = this.card[i];
 			this.card[i] = this.card[index];
 			this.card[index] = temp;
+		}
+		
+		for (int i = 0; i < this.card.length; i++) {
+			System.out.println("After shuffling, card " + (i + 1) + " is the " + this.card[i].getRank() + " of " + this.card[i].getSuit());
 		}
 	}
 }

@@ -8,6 +8,7 @@ public Hand(int numCards) {
 	this.card = new Card[numCards];
 	for (int i = 0; i < numCards; i++) {
 		this.card[i] = new Card(i);
+		System.out.println(this.card[i].getRank() + " " + this.card[i].getSuit());
 	}
 }
 }
