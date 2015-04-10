@@ -32,10 +32,10 @@ public static void main(String[] args) {
 	deck.shuffle();
 	
 	System.out.println("Human player cards:");
-	player = new Hand(7);
+	player = new Hand(7, deck);
 	
 	System.out.println("Computer player cards:");
-	computer = new Hand(7);
+	computer = new Hand(7, deck);
 }
 
 }
