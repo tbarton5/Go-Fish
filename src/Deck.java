@@ -48,6 +48,18 @@ public class Deck {
 		card = this.card[num];
 		return card;
 	}
+	
+	public static int getCard(String rank, String suit, Deck deck){
+		int result;
+		result = 0;
+		
+		for (int i = 0; i < 52; i++){
+			if(deck.card[i].getRank().equals(rank) && deck.card[i].getSuit().equals(suit))
+				result = deck.card[i].getNum();
+		}
+		
+		return result;
+	}
 }
 
 

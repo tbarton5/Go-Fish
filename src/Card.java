@@ -58,4 +58,25 @@ public class Card {
 			deck[index] = temp;
 		}
 	}
+	
+	public static int emptyCard(Card[] card){
+		int element;
+		boolean isNull;
+		
+		int i = 0;
+		isNull = false;
+		element = 0;
+		
+		while(!isNull){
+			
+			if(card[i] == null){
+				isNull = true;
+				element = i;
+			}
+			
+			i++;
+		}
+		
+		return element;
+	}
 }

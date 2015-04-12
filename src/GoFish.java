@@ -36,6 +36,22 @@ public static void main(String[] args) {
 	
 	System.out.println("Computer player cards:");
 	computer = new Hand(7, deck);
+	
+	Hand.askForCards(player, computer, deck);
+	
+	System.out.println("New human cards");
+	
+	for(int i = 0; player.card[i] != null; i++){
+		System.out.println(player.card[i].getRank() + " " + player.card[i].getSuit());
+	}
+	
+	System.out.println("New computer player cards:");
+	
+	for(int i = 0; i < computer.card.length; i++){
+		if(computer.card[i] != null){
+			System.out.println(computer.card[i].getRank() + " " + computer.card[i].getSuit());
+		}
+	}
 }
 
 }
