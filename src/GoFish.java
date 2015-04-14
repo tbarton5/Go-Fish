@@ -16,8 +16,14 @@ private GoFish() {
 }
 
 public static void main(String[] args) {
+	DiscardPile pile;
 	Hand player;
 	Hand computer;
+	boolean isGameOver;
+	
+	pile = new DiscardPile();
+	isGameOver = false;
+	
 	java.awt.EventQueue.invokeLater(new Runnable() {
 		public void run() {
 			new GoFish().setVisible(true);
@@ -37,20 +43,19 @@ public static void main(String[] args) {
 	System.out.println("Computer player cards:");
 	computer = new Hand(7, deck);
 	
-	Hand.askForCards(player, computer, deck);
+	while(!isGameOver){
+		
+		Hand.playerTurn(player, computer, deck);
+		
+		Card.listAllCards(player,  computer);
 	
-	System.out.println("New human cards");
-	
-	for(int i = 0; player.card[i] != null; i++){
-		System.out.println(player.card[i].getRank() + " " + player.card[i].getSuit());
-	}
-	
-	System.out.println("New computer player cards:");
-	
-	for(int i = 0; i < computer.card.length; i++){
-		if(computer.card[i] != null){
-			System.out.println(computer.card[i].getRank() + " " + computer.card[i].getSuit());
-		}
+		Hand.computerTurn(player, computer, deck);
+		
+		Card.listAllCards(player, computer);
+		
+		DiscardPile.checkForBooks(player, computer, pile);
+		
+		isGameOver = DiscardPile.isGameOver(pile);
 	}
 }
 

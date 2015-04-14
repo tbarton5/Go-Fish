@@ -79,4 +79,20 @@ public class Card {
 		
 		return element;
 	}
+	
+	public static void listAllCards(Hand player, Hand computer){
+		System.out.println("New human cards:");
+		
+		for(int i = 0; i < player.card.length; i++){
+			if(player.card[i] != null)
+				System.out.println(player.card[i].getRank() + " " + player.card[i].getSuit());
+		}
+		
+		System.out.println("New computer player cards:");
+		
+		for(int i = 0; i < computer.card.length; i++){
+			if(computer.card[i] != null)
+				System.out.println(computer.card[i].getRank() + " " + computer.card[i].getSuit());
+		} 
+	}
 }
