@@ -23,12 +23,12 @@ public static void main(String[] args) {
 	
 	pile = new DiscardPile();
 	isGameOver = false;
-	
+	/*
 	java.awt.EventQueue.invokeLater(new Runnable() {
 		public void run() {
 			new GoFish().setVisible(true);
 		}
-	});
+	}); */
 	/*Card[] deck = new Card[52];
 
 	Deck.makeDeck(deck);*/
@@ -37,26 +37,35 @@ public static void main(String[] args) {
 	//Card.shuffleDeck(deck);
 	deck.shuffle();
 	
-	System.out.println("Human player cards:");
 	player = new Hand(7, deck);
 	
-	System.out.println("Computer player cards:");
 	computer = new Hand(7, deck);
 	
 	while(!isGameOver){
 		
-		Hand.playerTurn(player, computer, deck);
+		Gameplay.listAllCards(player, computer);
 		
-		Card.listAllCards(player,  computer);
+		Gameplay.playerTurn(player, computer, deck);
 	
-		Hand.computerTurn(player, computer, deck);
+		Gameplay.computerTurn(player, computer, deck);
 		
-		Card.listAllCards(player, computer);
+		Gameplay.checkForBooks(player, computer, pile);
 		
-		DiscardPile.checkForBooks(player, computer, pile);
+		isGameOver = Gameplay.isGameOver(pile);
 		
-		isGameOver = DiscardPile.isGameOver(pile);
+		System.out.println(Hand.cardOnTop);
 	}
+	
+	if (Gameplay.playerPoints > Gameplay.computerPoints)
+		System.out.println("You won with a total of " + Gameplay.playerPoints + " points!");
+	
+	else if(Gameplay.playerPoints < Gameplay.computerPoints)
+		System.out.println("The opponent won with a total of " + Gameplay.computerPoints + " points!");
+	
+	else
+		System.out.println("It's a tie!");
+	
+	System.out.println("**game has ended**");
 }
 
 }
