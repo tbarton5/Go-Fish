@@ -206,7 +206,7 @@ public class Gameplay {
 			
 			if(computerCounter == 4){
 				computerPoints++;
-				System.out.println("The computer earned a point! There score is now " + computerPoints);
+				System.out.println("The computer earned a point! Their score is now " + computerPoints);
 				
 				for(int j = 0; j < computer.card.length; j++){
 					if(computer.card[j] != null){
