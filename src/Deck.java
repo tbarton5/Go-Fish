@@ -13,7 +13,6 @@ public class Deck {
 		}
 	}
 	
-	
 	public void shuffle() {
 		int index;
 		Card temp;

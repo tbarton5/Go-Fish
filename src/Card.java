@@ -8,7 +8,6 @@ public class Card {
 	public static final String[] SUIT = {"Spades", "Clubs", "Hearts", "Diamonds"};
 	public static final String[] RANK = {"Ace", "2", "3", "4", "5", "6", "7", 
 			"8", "9", "10", "Jack", "Queen", "King"};
-
 	
 	public Card(int num, boolean isInDeck){
 		if (num == -1)
@@ -27,6 +26,7 @@ public class Card {
 	public void setRank(int x){
 		rank = RANK[x];
 	}
+	
 	public String getRank(){
 		return rank;
 	}

@@ -3,7 +3,6 @@ public class Gameplay {
 	
 	public static String[] last3Guesses = { "", "", "" };
 	public static int playerPoints = 0, computerPoints = 0;
-	
 
 	public static void playerTurn(Hand human, Hand computer, Deck deck) {
 		Scanner console = new Scanner(System.in);
