@@ -2,33 +2,28 @@ import java.util.*;
 import java.awt.*;
 
 import javax.swing.*;
-public class GoFish extends javax.swing.JFrame {
-	
-private GoFish() {
-	getContentPane().setPreferredSize(new Dimension(960,600));
-	getContentPane().setBackground(new Color(0,128,0));
-	
-	pack();
-	
-	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-	setTitle("Go Fish");
-	setLocationRelativeTo(null);
-}
-
+public class GoFish {
+	public static JFrame window;
 public static void main(String[] args) {
 	DiscardPile pile;
 	Hand player;
 	Hand computer;
 	boolean isGameOver;
+	window = new JFrame();
 	
 	pile = new DiscardPile();
 	isGameOver = false;
-	/*
-	java.awt.EventQueue.invokeLater(new Runnable() {
-		public void run() {
-			new GoFish().setVisible(true);
-		}
-	}); */
+	
+	window.getContentPane().setPreferredSize(new Dimension(960,600));
+	window.getContentPane().setBackground(new Color(0,128,0));
+	
+	window.pack();
+	
+	window.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	window.setTitle("Go Fish");
+	window.setLocationRelativeTo(null);
+	window.setVisible(true);
+	
 	/*Card[] deck = new Card[52];
 
 	Deck.makeDeck(deck);*/
