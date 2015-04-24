@@ -27,6 +27,10 @@ public class Card {
 		rank = RANK[x];
 	}
 	
+	public boolean isRank(String rank) {
+		return this.rank.equals(rank);
+	}
+	
 	public String getRank(){
 		return rank;
 	}

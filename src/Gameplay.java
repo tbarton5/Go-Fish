@@ -21,7 +21,7 @@ public class Gameplay {
 
 			for (int i = 0; i < human.card.length; i++) {
 				if (human.card[i] != null) {
-					if (human.card[i].getRank().equals(rank)) {
+					if (human.card[i].isRank(rank)) {
 						hasRank = true;
 						last3Guesses[2] = last3Guesses[1];
 						last3Guesses[1] = last3Guesses[0];
@@ -33,7 +33,7 @@ public class Gameplay {
 			if (hasRank) {
 				for (int i = 0; i < computer.card.length; i++) {
 					if (computer.card[i] != null) {
-						if (computer.card[i].getRank().equals(rank)) {
+						if (computer.card[i].isRank(rank)) {
 							System.out.println("You got a card!\n");
 							cardNum = computer.card[i].getNum();
 							human.card[Card.emptyCard(human.card)] = new Card(
@@ -78,15 +78,15 @@ public class Gameplay {
 
 		for (int i = 0; i < computer.card.length; i++) {
 			if (computer.card[i] != null) {
-				firstGuess = computer.card[i].getRank().equals(last3Guesses[0]);
+				firstGuess = computer.card[i].isRank(last3Guesses[0]);
 
 				if (firstGuess)
 					playerCard = last3Guesses[0];
-				secondGuess = computer.card[i].getRank().equals(last3Guesses[1]);
+				secondGuess = computer.card[i].isRank(last3Guesses[1]);
 
 				if (secondGuess)
 					playerCard = last3Guesses[1];
-				thirdGuess = computer.card[i].getRank().equals(last3Guesses[2]);
+				thirdGuess = computer.card[i].isRank(last3Guesses[2]);
 
 				if (thirdGuess)
 					playerCard = last3Guesses[2];
@@ -99,7 +99,7 @@ public class Gameplay {
 		if (hasPlayerCard) {
 			System.out.println("The computer got card(s) of rank " + playerCard + " from you!\n");
 			for (int i = 0; human.card[i] != null; i++) {
-				if (human.card[i].getRank().equals(playerCard)) {
+				if (human.card[i].isRank(playerCard)) {
 					cardNum = human.card[i].getNum();
 					computer.card[Card.emptyCard(computer.card)] = new Card(
 							cardNum, false);
@@ -124,7 +124,7 @@ public class Gameplay {
 
 			for (int i = 0; i < human.card.length; i++) {
 				if (human.card[i] != null) {
-					if (human.card[i].getRank().equals(computerCard))
+					if (human.card[i].isRank(computerCard))
 						hasCard = true;
 				}
 			}
@@ -133,7 +133,7 @@ public class Gameplay {
 				System.out.println("The computer got card(s) of rank " + computerCard + " from you!\n");
 				for (int i = 0; i < human.card.length; i++) {
 					if (human.card[i] != null) {
-						if (human.card[i].getRank().equals(computerCard)) {
+						if (human.card[i].isRank(computerCard)) {
 							cardNum = human.card[i].getNum();
 							computer.card[Card.emptyCard(computer.card)] = new Card(cardNum, false);
 							human.card[i] = null;
@@ -177,7 +177,7 @@ public class Gameplay {
 			
 			for(int j = 0; j < human.card.length; j++){
 				if(human.card[j] != null){
-					if(human.card[j].getRank().equals(Card.RANK[i]))
+					if(human.card[j].isRank(Card.RANK[i]))
 						playerCounter++;
 				}
 			}
@@ -188,7 +188,7 @@ public class Gameplay {
 				
 				for(int j = 0; j < human.card.length; j++){
 					if(human.card[j] != null){
-						if(human.card[j].getRank().equals(Card.RANK[i])){
+						if(human.card[j].isRank(Card.RANK[i])){
 							cardNum = human.card[j].getNum();
 							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
 							human.card[j] = null;
@@ -199,7 +199,7 @@ public class Gameplay {
 			
 			for(int j = 0; j < computer.card.length; j++){
 				if(computer.card[j] != null){
-					if(computer.card[j].getRank().equals(Card.RANK[i]))
+					if(computer.card[j].isRank(Card.RANK[i]))
 						computerCounter++;
 				}
 			}
@@ -210,7 +210,7 @@ public class Gameplay {
 				
 				for(int j = 0; j < computer.card.length; j++){
 					if(computer.card[j] != null){
-						if(computer.card[j].getRank().equals(Card.RANK[i])){
+						if(computer.card[j].isRank(Card.RANK[i])){
 							cardNum = computer.card[j].getNum();
 							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
 							computer.card[j] = null;
