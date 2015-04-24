@@ -8,7 +8,7 @@ public class Gameplay {
 	public static void playerTurn(Hand human, Hand computer, Deck deck) {
 		Scanner console = new Scanner(System.in);
 		String rank, tempGuess;
-		int cardNum;
+		int cardNum, cardPosition;
 		boolean hasRank, hasCard;
 
 		hasRank = false;
@@ -47,10 +47,10 @@ public class Gameplay {
 
 				if (!hasCard) {
 					if (Hand.cardOnTop < 52) {
-						System.out.println("Sorry, go fish!\n");
 						cardNum = deck.card[Hand.cardOnTop].getNum();
-						human.card[Card.emptyCard(human.card)] = new Card(
-								cardNum, false);
+						cardPosition = Card.emptyCard(human.card);
+						human.card[cardPosition] = new Card(cardNum, false);
+						System.out.println("Sorry, go fish! You received a(n) " + human.card[cardPosition].getCard() + "\n");
 						Hand.cardOnTop++;
 					} else
 						System.out.println("The deck is empty, you can't draw.");
@@ -143,6 +143,7 @@ public class Gameplay {
 				}
 			} else {
 				if (Hand.cardOnTop < 52) {
+					System.out.println("The computer asked for a(n) " + computerCard);
 					System.out.println("The computer drew from the pile.\n");
 					cardNum = deck.card[Hand.cardOnTop].getNum();
 					computer.card[Card.emptyCard(computer.card)] = new Card(

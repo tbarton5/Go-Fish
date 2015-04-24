@@ -35,6 +35,10 @@ public class Card {
 		return suit;
 	}
 	
+	public String getCard() {
+		return rank + " of " + suit;
+	}
+	
 	public void setNum(int num){
 		this.num = num;
 	}
