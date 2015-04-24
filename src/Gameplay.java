@@ -20,27 +20,23 @@ public class Gameplay {
 			rank = console.next();
 
 			for (int i = 0; i < human.card.length; i++) {
-				if (human.card[i] != null) {
-					if (human.card[i].isRank(rank)) {
-						hasRank = true;
-						last3Guesses[2] = last3Guesses[1];
-						last3Guesses[1] = last3Guesses[0];
-						last3Guesses[0] = rank;
-					}
+				if (human.card[i] != null && human.card[i].isRank(rank)) {
+					hasRank = true;
+					last3Guesses[2] = last3Guesses[1];
+					last3Guesses[1] = last3Guesses[0];
+					last3Guesses[0] = rank;
 				}
 			}
 
 			if (hasRank) {
 				for (int i = 0; i < computer.card.length; i++) {
-					if (computer.card[i] != null) {
-						if (computer.card[i].isRank(rank)) {
-							System.out.println("You got a card!\n");
-							cardNum = computer.card[i].getNum();
-							human.card[Card.emptyCard(human.card)] = new Card(
-									cardNum, false);
-							computer.card[i] = null;
-							hasCard = true;
-						}
+					if (computer.card[i] != null && computer.card[i].isRank(rank)) {
+						System.out.println("You got a card!\n");
+						cardNum = computer.card[i].getNum();
+						human.card[Card.emptyCard(human.card)] = new Card(
+								cardNum, false);
+						computer.card[i] = null;
+						hasCard = true;
 					}
 				}
 
@@ -123,21 +119,17 @@ public class Gameplay {
 				computerCard = computer.card[compNum].getRank();
 
 			for (int i = 0; i < human.card.length; i++) {
-				if (human.card[i] != null) {
-					if (human.card[i].isRank(computerCard))
-						hasCard = true;
-				}
+				if (human.card[i] != null && human.card[i].isRank(computerCard))
+					hasCard = true;
 			}
 
 			if (hasCard) {
 				System.out.println("The computer got card(s) of rank " + computerCard + " from you!\n");
 				for (int i = 0; i < human.card.length; i++) {
-					if (human.card[i] != null) {
-						if (human.card[i].isRank(computerCard)) {
-							cardNum = human.card[i].getNum();
-							computer.card[Card.emptyCard(computer.card)] = new Card(cardNum, false);
-							human.card[i] = null;
-						}
+					if (human.card[i] != null && human.card[i].isRank(computerCard)) {
+						cardNum = human.card[i].getNum();
+						computer.card[Card.emptyCard(computer.card)] = new Card(cardNum, false);
+						human.card[i] = null;
 					}
 				}
 			} else {
@@ -176,10 +168,8 @@ public class Gameplay {
 			cardNum = 0;
 			
 			for(int j = 0; j < human.card.length; j++){
-				if(human.card[j] != null){
-					if(human.card[j].isRank(Card.RANK[i]))
-						playerCounter++;
-				}
+				if (human.card[j] != null && human.card[j].isRank(Card.RANK[i]))
+					playerCounter++;
 			}
 			
 			if(playerCounter == 4){
@@ -187,21 +177,17 @@ public class Gameplay {
 				System.out.println("You earned a point! Your score is now " + playerPoints);
 				
 				for(int j = 0; j < human.card.length; j++){
-					if(human.card[j] != null){
-						if(human.card[j].isRank(Card.RANK[i])){
-							cardNum = human.card[j].getNum();
-							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
-							human.card[j] = null;
-						}
+					if (human.card[j] != null && human.card[j].isRank(Card.RANK[i])) {
+						cardNum = human.card[j].getNum();
+						Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
+						human.card[j] = null;
 					}
 				}
 			}
 			
 			for(int j = 0; j < computer.card.length; j++){
-				if(computer.card[j] != null){
-					if(computer.card[j].isRank(Card.RANK[i]))
-						computerCounter++;
-				}
+				if (computer.card[j] != null && computer.card[j].isRank(Card.RANK[i]))
+					computerCounter++;
 			}
 			
 			if(computerCounter == 4){
@@ -209,12 +195,10 @@ public class Gameplay {
 				System.out.println("The computer earned a point! Their score is now " + computerPoints);
 				
 				for(int j = 0; j < computer.card.length; j++){
-					if(computer.card[j] != null){
-						if(computer.card[j].isRank(Card.RANK[i])){
-							cardNum = computer.card[j].getNum();
-							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
-							computer.card[j] = null;
-						}
+					if (computer.card[j] != null && computer.card[j].isRank(Card.RANK[i])) {
+						cardNum = computer.card[j].getNum();
+						Pile.pile[Card.emptyCard(Pile.pile)] = new Card(cardNum, false);
+						computer.card[j] = null;
 					}
 				}
 			}
