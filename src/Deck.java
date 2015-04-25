@@ -9,9 +9,10 @@ public class Deck {
 		this.card = new Card[numCards];
 		for (int i = 0; i < numCards; i++) {
 			this.card[i] = new Card(i, true);
-			System.out.println("Card " + (i + 1) + " is the " + this.card[i].getRank() + " of " + this.card[i].getSuit());
+			//System.out.println("Card " + (i + 1) + " is the " + this.card[i].getRank() + " of " + this.card[i].getSuit());
 		}
 	}
+	
 	
 	public void shuffle() {
 		int index;
@@ -26,10 +27,10 @@ public class Deck {
 			this.card[i] = this.card[index];
 			this.card[index] = temp;
 		}
-		
+		/*
 		for (int i = 0; i < this.card.length; i++) {
 			System.out.println("After shuffling, card " + (i + 1) + " is the " + this.card[i].getRank() + " of " + this.card[i].getSuit());
-		}
+		} */
 	}
 	
 	public void setCard(int element, int num){
