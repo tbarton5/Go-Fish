@@ -50,6 +50,7 @@ public class Gameplay {
 							computer.card[i] = null;
 							hasCard = true;
 							GoFish.button[cardNum % 13].setEnabled(true);
+							GoFish.currentCards[cardNum].setText(human.card[i].getSuit());
 						}
 					}
 				}
@@ -64,6 +65,7 @@ public class Gameplay {
 								+ deck.card[Hand.cardOnTop].getSuit() + ".");
 						Hand.cardOnTop++;
 						GoFish.button[cardNum % 13].setEnabled(true);
+						GoFish.currentCards[cardNum].setText(deck.card[Hand.cardOnTop].getSuit());
 					} else{
 						System.out.println("The deck is empty, you can't draw.");
 						hasRank = true;
@@ -119,6 +121,7 @@ public class Gameplay {
 				if (human.card[i].getRank().equals(playerCard)) {
 					cardNum = human.card[i].getNum();
 					GoFish.button[cardNum % 13].setEnabled(false);
+					GoFish.currentCards[cardNum].setText("");
 					computer.card[Card.emptyCard(computer.card)] = new Card(
 							cardNum, false);
 					human.card[i] = null;
@@ -155,6 +158,7 @@ public class Gameplay {
 						if (human.card[i].getRank().equals(computerCard)) {
 							cardNum = human.card[i].getNum();
 							GoFish.button[cardNum % 13].setEnabled(false);
+							GoFish.currentCards[cardNum].setText("");
 							computer.card[Card.emptyCard(computer.card)] = new Card(
 									cardNum, false);
 							human.card[i] = null;
@@ -216,6 +220,7 @@ public class Gameplay {
 									cardNum, false);
 							human.card[j] = null;
 							GoFish.button[cardNum % 13].setEnabled(false);
+							GoFish.currentCards[cardNum].setText("");
 						}
 					}
 				}
@@ -252,9 +257,11 @@ public class Gameplay {
 		System.out.println("Your cards:\n");
 
 		for (int i = 0; i < player.card.length; i++) {
-			if (player.card[i] != null)
+			if (player.card[i] != null) {
 				System.out.println(player.card[i].getRank() + " "
 						+ player.card[i].getSuit());
+				GoFish.currentCards[player.card[i].getNum()].setText(player.card[i].getSuit());
+			}
 		}
 		/*
 		 * System.out.println("New computer player cards:");
