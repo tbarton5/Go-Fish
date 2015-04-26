@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 public class Card {
 
 	public int num;

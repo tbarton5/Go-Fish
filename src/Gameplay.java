@@ -1,20 +1,27 @@
-import java.util.Scanner;
 
 public class Gameplay {
 
 	public static String[] last3Guesses = { "", "", "" };
 	public static int playerPoints = 0, computerPoints = 0;
-
-	public static void playerTurn(Hand human, Hand computer, Deck deck) {
-		Scanner console = new Scanner(System.in);
-		String rank, tempGuess;
+	
+	public static void playRound(String rank) {
+		playerTurn(GoFish.player, GoFish.computer, GoFish.deck, rank);
+		computerTurn(GoFish.player, GoFish.computer, GoFish.deck);
+		checkForBooks(GoFish.player, GoFish.computer, GoFish.pile);
+		isGameOver(GoFish.pile);
+		listAllCards(GoFish.player, GoFish.computer);
+	}
+	
+	public static void playerTurn(Hand human, Hand computer, Deck deck, String rank) {
+		//Scanner console = new Scanner(System.in);
+		//String rank, tempGuess;
 		int cardNum, numOfCards;
 		boolean hasRank, hasCard;
 
 		numOfCards = 0;
 		hasRank = false;
 		hasCard = false;
-		rank = "";
+		//rank = "";
 
 		for (int i = 0; i < human.card.length; i++) {
 			if (human.card[i] != null)
@@ -23,10 +30,10 @@ public class Gameplay {
 
 		while (!hasRank) {
 
-			if (numOfCards != 0) {
+			/*if (numOfCards != 0) {
 				System.out.print("\nPlease enter the rank you want: ");
 				rank = console.next();
-			}
+			}*/
 
 			for (int i = 0; i < human.card.length; i++) {
 				if (human.card[i] != null) {
@@ -179,17 +186,25 @@ public class Gameplay {
 		}
 	}
 
-	public static boolean isGameOver(DiscardPile Pile) {
+	public static void isGameOver(DiscardPile Pile) {
 		int totalPointsGiven;
-		boolean GameOver;
 
-		GameOver = false;
 		totalPointsGiven = computerPoints + playerPoints;
 
-		if (totalPointsGiven == 13)
-			GameOver = true;
-
-		return GameOver;
+		if (totalPointsGiven == 13) {
+		
+			if (Gameplay.playerPoints > Gameplay.computerPoints)
+				System.out.println("You won with a total of " + Gameplay.playerPoints + " points!");
+			
+			else if(Gameplay.playerPoints < Gameplay.computerPoints)
+				System.out.println("The opponent won with a total of " + Gameplay.computerPoints + " points!");
+			
+			else
+				System.out.println("It's a tie!");
+			
+			System.out.println("**game has ended**");
+			System.exit(0);
+		}
 	}
 
 	public static void checkForBooks(Hand human, Hand computer, DiscardPile Pile) {

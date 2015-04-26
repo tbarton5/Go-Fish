@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class Hand {
 	public int numCards;
