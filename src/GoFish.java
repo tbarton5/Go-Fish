@@ -45,6 +45,7 @@ public class GoFish {
 			col.setBackground(new Color(0, 128, 0));
 			col.setBorder(new EmptyBorder(5, 5, 5, 5));
 			button[i] = new JButton(Card.RANK[i]);
+			button[i].setFont(button[i].getFont().deriveFont(24.0f));
 			button[i].setEnabled(false);
 			button[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

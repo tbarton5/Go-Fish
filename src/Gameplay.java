@@ -240,7 +240,7 @@ public class Gameplay {
 									cardNum, false);
 							human.card[j] = null;
 							GoFish.button[cardNum % 13].setEnabled(false);
-							GoFish.currentCards[cardNum].setText("\u2713");
+							GoFish.button[cardNum % 13].setText("\u2713");
 							GoFish.currentCards[cardNum].setVisible(true);
 						}
 					}
@@ -267,6 +267,7 @@ public class Gameplay {
 							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(
 									cardNum, false);
 							computer.card[j] = null;
+							GoFish.button[cardNum % 13].setText("X");
 						}
 					}
 				}
