@@ -6,6 +6,7 @@ public class Card {
 	public String rank;
 	public boolean isInDeck;
 	public static final String[] SUIT = {"Spades", "Clubs", "Hearts", "Diamonds"};
+	public static final String[] SHAPES = {"\u2660", "\u2663", "\u2665", "\u2666"};
 	public static final String[] RANK = {"A", "2", "3", "4", "5", "6", "7", 
 			"8", "9", "10", "J", "Q", "K"};
 

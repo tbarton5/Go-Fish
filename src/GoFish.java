@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 public class GoFish {
 	public static DiscardPile pile;
 	public static Hand player;
@@ -29,28 +30,36 @@ public class GoFish {
 		window.setLocationRelativeTo(null);
 		
 		JPanel panelTop = new JPanel();
-		panelTop.setBackground(new Color(0, 0, 128));
+		panelTop.setBackground(new Color(0, 128, 0));
 		
 		JPanel panelBottom = new JPanel();
 		panelBottom.setBackground(new Color(0, 128, 0));
 		panelBottom.setLayout((LayoutManager) new GridLayout(1,13));
+		panelBottom.setBorder(new EmptyBorder(15, 15, 15, 15));
 		
 		currentCards = new JLabel[52];
 		button = new JButton[13];
 		for (int i = 0; i < 13; i++) {
 			JPanel col = new JPanel();
 			col.setLayout((LayoutManager) new GridLayout(5, 1));
+			col.setBackground(new Color(0, 128, 0));
+			col.setBorder(new EmptyBorder(5, 5, 5, 5));
 			button[i] = new JButton(Card.RANK[i]);
 			button[i].setEnabled(false);
 			button[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//System.out.print(e.getSource());
 					Gameplay.playRound(((JButton) e.getSource()).getActionCommand());
 				}
 			});
 			col.add(button[i]);
 			for (int j = 0; j < 52; j += 13) {
-				currentCards[i + j] = new JLabel();
+				currentCards[i + j] = new JLabel(Card.SHAPES[j / 13], SwingConstants.CENTER);
+				currentCards[i + j].setBackground(Color.WHITE);
+				currentCards[i + j].setOpaque(true);
+				currentCards[i + j].setVisible(false);
+				currentCards[i + j].setFont(currentCards[i + j].getFont().deriveFont(48.0f));
+				if (j / 26 == 1)
+					currentCards[i + j].setForeground(Color.RED);
 				col.add(currentCards[i + j]);
 			}
 			panelBottom.add(col);

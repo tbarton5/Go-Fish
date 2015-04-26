@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 
 public class Gameplay {
 
@@ -57,7 +59,8 @@ public class Gameplay {
 							computer.card[i] = null;
 							hasCard = true;
 							GoFish.button[cardNum % 13].setEnabled(true);
-							GoFish.currentCards[cardNum].setText(human.card[i].getSuit());
+							//GoFish.currentCards[cardNum].setText(human.card[i].getSuit());
+							GoFish.currentCards[cardNum].setVisible(true);
 						}
 					}
 				}
@@ -72,7 +75,8 @@ public class Gameplay {
 								+ deck.card[Hand.cardOnTop].getSuit() + ".");
 						Hand.cardOnTop++;
 						GoFish.button[cardNum % 13].setEnabled(true);
-						GoFish.currentCards[cardNum].setText(deck.card[Hand.cardOnTop].getSuit());
+						//GoFish.currentCards[cardNum].setText(deck.card[Hand.cardOnTop].getSuit());
+						GoFish.currentCards[cardNum].setVisible(true);
 					} else{
 						System.out.println("The deck is empty, you can't draw.");
 						hasRank = true;
@@ -128,7 +132,8 @@ public class Gameplay {
 				if (human.card[i].getRank().equals(playerCard)) {
 					cardNum = human.card[i].getNum();
 					GoFish.button[cardNum % 13].setEnabled(false);
-					GoFish.currentCards[cardNum].setText("");
+					//GoFish.currentCards[cardNum].setText("");
+					GoFish.currentCards[cardNum].setVisible(false);
 					computer.card[Card.emptyCard(computer.card)] = new Card(
 							cardNum, false);
 					human.card[i] = null;
@@ -165,7 +170,8 @@ public class Gameplay {
 						if (human.card[i].getRank().equals(computerCard)) {
 							cardNum = human.card[i].getNum();
 							GoFish.button[cardNum % 13].setEnabled(false);
-							GoFish.currentCards[cardNum].setText("");
+							//GoFish.currentCards[cardNum].setText("");
+							GoFish.currentCards[cardNum].setVisible(false);
 							computer.card[Card.emptyCard(computer.card)] = new Card(
 									cardNum, false);
 							human.card[i] = null;
@@ -194,16 +200,15 @@ public class Gameplay {
 		if (totalPointsGiven == 13) {
 		
 			if (Gameplay.playerPoints > Gameplay.computerPoints)
-				System.out.println("You won with a total of " + Gameplay.playerPoints + " points!");
+				JOptionPane.showMessageDialog(null, "You won with a total of " + Gameplay.playerPoints + " points!");
 			
 			else if(Gameplay.playerPoints < Gameplay.computerPoints)
-				System.out.println("The opponent won with a total of " + Gameplay.computerPoints + " points!");
+				JOptionPane.showMessageDialog(null, "The opponent won with a total of " + Gameplay.computerPoints + " points!");
 			
 			else
-				System.out.println("It's a tie!");
+				JOptionPane.showMessageDialog(null, "It's a tie!");
 			
-			System.out.println("**game has ended**");
-			System.exit(0);
+			System.out.println("The game has ended. You may now close the window.");
 		}
 	}
 
@@ -235,7 +240,8 @@ public class Gameplay {
 									cardNum, false);
 							human.card[j] = null;
 							GoFish.button[cardNum % 13].setEnabled(false);
-							GoFish.currentCards[cardNum].setText("");
+							GoFish.currentCards[cardNum].setText("\u2713");
+							GoFish.currentCards[cardNum].setVisible(true);
 						}
 					}
 				}
@@ -275,7 +281,8 @@ public class Gameplay {
 			if (player.card[i] != null) {
 				System.out.println(player.card[i].getRank() + " "
 						+ player.card[i].getSuit());
-				GoFish.currentCards[player.card[i].getNum()].setText(player.card[i].getSuit());
+				//GoFish.currentCards[player.card[i].getNum()].setText(player.card[i].getSuit());
+				GoFish.currentCards[player.card[i].getNum()].setVisible(true);
 			}
 		}
 		/*
