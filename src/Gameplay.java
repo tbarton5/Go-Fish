@@ -193,21 +193,13 @@ public class Gameplay {
 	}
 
 	public static void isGameOver(DiscardPile Pile) {
-		int totalPointsGiven;
-
-		totalPointsGiven = computerPoints + playerPoints;
-
-		if (totalPointsGiven == 13) {
-		
-			if (Gameplay.playerPoints > Gameplay.computerPoints)
-				JOptionPane.showMessageDialog(null, "You won with a total of " + Gameplay.playerPoints + " points!");
-			
-			else if(Gameplay.playerPoints < Gameplay.computerPoints)
-				JOptionPane.showMessageDialog(null, "The opponent won with a total of " + Gameplay.computerPoints + " points!");
-			
+		if (computerPoints == 7 || playerPoints == 7) {
+			if (playerPoints > computerPoints)
+				JOptionPane.showMessageDialog(null, "You win!");
+			else if (playerPoints < computerPoints)
+				JOptionPane.showMessageDialog(null, "You lose!");
 			else
 				JOptionPane.showMessageDialog(null, "It's a tie!");
-			
 			System.out.println("The game has ended. You may now close the window.");
 		}
 	}
