@@ -49,6 +49,7 @@ public class Gameplay {
 									cardNum, false);
 							computer.card[i] = null;
 							hasCard = true;
+							GoFish.button[cardNum % 13].setEnabled(true);
 						}
 					}
 				}
@@ -62,6 +63,7 @@ public class Gameplay {
 								+ deck.card[Hand.cardOnTop].getRank() + " of "
 								+ deck.card[Hand.cardOnTop].getSuit() + ".");
 						Hand.cardOnTop++;
+						GoFish.button[cardNum % 13].setEnabled(true);
 					} else{
 						System.out.println("The deck is empty, you can't draw.");
 						hasRank = true;
@@ -116,6 +118,7 @@ public class Gameplay {
 			for (int i = 0; human.card[i] != null; i++) {
 				if (human.card[i].getRank().equals(playerCard)) {
 					cardNum = human.card[i].getNum();
+					GoFish.button[cardNum % 13].setEnabled(false);
 					computer.card[Card.emptyCard(computer.card)] = new Card(
 							cardNum, false);
 					human.card[i] = null;
@@ -146,11 +149,12 @@ public class Gameplay {
 
 			if (hasCard) {
 				System.out.println("The computer got card(s) of rank "
-						+ computerCard + " from you!\n");
+						+ computerCard + " from you!!\n");
 				for (int i = 0; i < human.card.length; i++) {
 					if (human.card[i] != null) {
 						if (human.card[i].getRank().equals(computerCard)) {
 							cardNum = human.card[i].getNum();
+							GoFish.button[cardNum % 13].setEnabled(false);
 							computer.card[Card.emptyCard(computer.card)] = new Card(
 									cardNum, false);
 							human.card[i] = null;
@@ -211,6 +215,7 @@ public class Gameplay {
 							Pile.pile[Card.emptyCard(Pile.pile)] = new Card(
 									cardNum, false);
 							human.card[j] = null;
+							GoFish.button[cardNum % 13].setEnabled(false);
 						}
 					}
 				}
@@ -258,5 +263,10 @@ public class Gameplay {
 		 * null) System.out.println(computer.card[i].getRank() + " " +
 		 * computer.card[i].getSuit()); }
 		 */
+	}
+	public static void enablePlayerCards(Hand player) {
+		for (int i = 0; i < player.card.length; i++)
+			if (player.card[i] != null)
+				GoFish.button[player.card[i].getNum() % 13].setEnabled(true);
 	}
 }

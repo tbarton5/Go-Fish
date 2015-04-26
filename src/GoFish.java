@@ -32,6 +32,7 @@ public class GoFish {
 		button = new JButton[13];
 		for (int i = 0; i < 13; i++) {
 			button[i] = new JButton(Card.RANK[i]);
+			button[i].setEnabled(false);
 			panelBottom.add(button[i]);
 		}
 		
@@ -47,6 +48,7 @@ public class GoFish {
 		deck.shuffle();
 		
 		player = new Hand(7, deck);
+		Gameplay.enablePlayerCards(player);
 		
 		computer = new Hand(7, deck);
 		
