@@ -6,8 +6,8 @@ public class Card {
 	public String rank;
 	public boolean isInDeck;
 	public static final String[] SUIT = {"Spades", "Clubs", "Hearts", "Diamonds"};
-	public static final String[] RANK = {"Ace", "2", "3", "4", "5", "6", "7", 
-			"8", "9", "10", "Jack", "Queen", "King"};
+	public static final String[] RANK = {"A", "2", "3", "4", "5", "6", "7", 
+			"8", "9", "10", "J", "Q", "K"};
 
 	
 	public Card(int num, boolean isInDeck){
