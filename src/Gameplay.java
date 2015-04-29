@@ -193,7 +193,7 @@ public class Gameplay {
 	}
 
 	public static void isGameOver(DiscardPile Pile) {
-		if (computerPoints == 7 || playerPoints == 7) {
+		if (computerPoints + playerPoints == 13) {
 			if (playerPoints > computerPoints)
 				JOptionPane.showMessageDialog(null, "You win!");
 			else if (playerPoints < computerPoints)
